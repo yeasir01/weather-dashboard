@@ -13,111 +13,104 @@
 <body>
 
   <header>
-    <nav class="navbar bg-info justify-content-center text-center">
+    <nav class="navbar bg-color justify-content-center text-center">
       <h3 class="text-white display-4">Weather Dashboard</h3>
     </nav>
   </header>
 
-  <main class="container-fluid p-md-5">
+  <main class="container-fluid p-md-5 pt-3">
     <div class="row">
       <div class="col-lg-3 col-md-5 col-sm-12">
-
         <form class="mb-3">
           <label class="text-dark" for="search-text">Search by city</label>
           <div class="input-group">
             <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="search-txt">
-            <button class="btn btn-outline-info ml-2" type="submit" id="search-btn"><i class="fas fa-search"></i></button>
+            <button class="btn btn-outline-info ml-2" type="submit" id="search-btn"><i
+                class="fas fa-search"></i></button>
           </div>
         </form>
         <div class="recent">
           <p>Recent</p>
-          <button type="button" class="btn btn-light w-100 mb-2">Sacramento, CA</button>
-          <button type="button" class="btn btn-light w-100 mb-2">San Mateo, CA</button>
-          <button type="button" class="btn btn-light w-100 mb-2">San Jose, CA</button>
+          <button type="button" class="btn btn-light w-100 mb-2">Sacramento</button>
+          <button type="button" class="btn btn-light w-100 mb-2">San Mateo</button>
+          <button type="button" class="btn btn-light w-100 mb-2">San Jose</button>
         </div>
       </div>
-
       <div class="col-lg-9 col-md-7 col-sm-12">
         <div class="row">
           <div class="col">
-
             <div class="card">
               <div class="card-body">
-                <h1 class="mb-3" id="current-city"></h1>
-                <p>Temp: <span id="current-temp"></span></p>
-                <p>Humidity: <span id="current-humidity"></span></p>
-                <p>Wind Speed: <span id="current-windspeed"></span></p>
-                <p>UV Index: <span id="current-uv"></span></p>
-                <p id="strings"></p>
+                <h1 class="mb-3" id="current-city">Search by city</h1>
+                <div class="float-right mr-5" id="weather-icon"></div>
+                <p class="current-label">Temp: <span id="current-temp"></span></p>
+                <p class="current-label">Humidity: <span id="current-humidity"></span></p>
+                <p class="current-label">Wind Speed: <span id="current-windspeed"></span></p>
+                <p class="current-label">UV Index: <span id="current-uv"></span></p>
               </div>
             </div>
-
           </div>
         </div>
-
         <div class="row my-3">
           <div class="col">
             <div class="card">
               <div class="card-body">
-                
                 <div class="row mb-2">
                   <div class="col">
                     <h4>5-Day Forecast</h4>
                   </div>
                 </div>
-
                 <div class="row">
                   <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                     <div class="card text-center bg-light">
                       <div class="card-body">
-                        <h5 class="card-title">8/12/12</h5>
-                        <img src="" alt="">
-                        <p>Temp: 86.84</p>
-                        <p>Humidity: 43%</p>
+                        <h5 class="card-title" id="day-one-date"></h5>
+                        <div id="day-one-icon"></div>
+                        <p id="day-one-temp"></p>
+                        <p id="day-one-humid"></p>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                     <div class="card text-center bg-light">
                       <div class="card-body">
-                        <h5 class="card-title">8/12/12</h5>
-                        <img src="" alt="">
-                        <p>Temp: 86.84</p>
-                        <p>Humidity: 43%</p>
+                        <h5 class="card-title" id="day-two-date"></h5>
+                        <div id="day-two-icon"></div>
+                        <p id="day-two-temp"></p>
+                        <p id="day-two-humid"></p>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                     <div class="card text-center bg-light">
                       <div class="card-body">
-                        <h5 class="card-title">8/12/12</h5>
-                        <img src="" alt="">
-                        <p>Temp: 86.84</p>
-                        <p>Humidity: 43%</p>
+                        <h5 class="card-title" id="day-three-date"></h5>
+                        <div id="day-three-icon"></div>
+                        <p id="day-three-temp"></p>
+                        <p id="day-three-humid"></p>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                     <div class="card text-center bg-light">
                       <div class="card-body">
-                        <h5 class="card-title">8/12/12</h5>
-                        <img src="" alt="">
-                        <p>Temp: 86.84</p>
-                        <p>Humidity: 43%</p>
+                        <h5 class="card-title" id="day-four-date"></h5>
+                        <div id="day-four-icon"></div>
+                        <p id="day-four-temp"></p>
+                        <p id="day-four-humid"></p>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                     <div class="card text-center bg-light">
                       <div class="card-body">
-                        <h5 class="card-title">8/12/12</h5>
-                        <img src="" alt="">
-                        <p>Temp: 86.84</p>
-                        <p>Humidity: 43%</p>
+                        <h5 class="card-title" id="day-five-date"></h5>
+                        <div id="day-five-icon"></div>
+                        <p id="day-five-temp"></p>
+                        <p id="day-five-humid"></p>
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -125,7 +118,6 @@
         </div>
       </div>
     </div>
-
   </main>
 
   <footer class="footer mt-auto py-3 text-center">
