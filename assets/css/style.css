@@ -14,3 +14,7 @@ body {
     font-weight: 600;
     color: #2980b9;
 }
+
+.card-bg {
+    background-color: rgba(52, 152, 219, 0.25);
+}
