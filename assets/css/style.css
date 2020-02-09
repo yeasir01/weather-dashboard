@@ -1,3 +1,16 @@
 body {
     background-color: #ededed;
 }
+
+.bg-color {
+    background-color: #34495e;
+}
+
+.current-label {
+    font-weight: 700;
+}
+
+.current-label span {
+    font-weight: 600;
+    color: #2980b9;
+}
