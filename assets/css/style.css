@@ -16,5 +16,9 @@ body {
 }
 
 .card-bg {
-    background-color: rgba(52, 152, 219, 0.25);
+    background-color: rgba(52, 152, 219, 0.20);
+}
+
+.hide {
+    display: none;
 }

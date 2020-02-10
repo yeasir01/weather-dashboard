@@ -22,18 +22,18 @@
     <div class="row">
       <div class="col-lg-3 col-md-5 col-sm-12">
         <form class="mb-3">
-          <label class="text-dark" for="search-text">Search by city</label>
+          <label class="text-dark" for="search-text">Search by city or zip</label>
           <div class="input-group">
             <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="search-txt">
             <button class="btn btn-outline-info ml-2" type="submit" id="search-btn"><i
                 class="fas fa-search"></i></button>
           </div>
         </form>
+        <p>Recent</p>
         <div class="recent">
-          <p>Recent</p>
-          <button type="button" class="btn btn-light w-100 mb-2">Sacramento</button>
-          <button type="button" class="btn btn-light w-100 mb-2">San Mateo</button>
-          <button type="button" class="btn btn-light w-100 mb-2">San Jose</button>
+          <button class="btn btn-light w-100 mb-2" data-name="Sacramento, US">Sacramento, US</button>
+          <button class="btn btn-light w-100 mb-2" data-name="Manhattan, US">Manhattan, US</button>
+          <button class="btn btn-light w-100 mb-2" data-name="Ontario, CA">Ontario, CA</button>
         </div>
       </div>
       <div class="col-lg-9 col-md-7 col-sm-12">
@@ -41,7 +41,7 @@
           <div class="col">
             <div class="card">
               <div class="card-body">
-                <h1 class="mb-3" id="current-city">Search by city</h1>
+                <h1 class="mb-3" id="current-city"></h1>
                 <div class="float-right mr-5" id="weather-icon"></div>
                 <p class="current-label">Temp: <span id="current-temp"></span></p>
                 <p class="current-label">Humidity: <span id="current-humidity"></span></p>
@@ -57,12 +57,13 @@
               <div class="card-body">
                 <div class="row mb-2">
                   <div class="col">
-                    <h4>5-Day Forecast</h4>
+                    <h4>5-Day Forecast</h4> 
+                    <p>Displayed in  your local time at 24 Hour increments from the current hour.</p>
                   </div>
                 </div>
                 <div class="row d-flex justify-content-between">
                   <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-4">
-                    <div class="card text-center card-bg">
+                    <div class="card text-center card-bg hide">
                       <div class="card-body">
                         <h5 class="card-title" id="day-one-date"></h5>
                         <div id="day-one-icon"></div>
@@ -72,7 +73,7 @@
                     </div>
                   </div>
                   <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-4">
-                    <div class="card text-center card-bg">
+                    <div class="card text-center card-bg hide">
                       <div class="card-body">
                         <h5 class="card-title" id="day-two-date"></h5>
                         <div id="day-two-icon"></div>
@@ -82,7 +83,7 @@
                     </div>
                   </div>
                   <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-4">
-                    <div class="card text-center card-bg">
+                    <div class="card text-center card-bg hide">
                       <div class="card-body">
                         <h5 class="card-title" id="day-three-date"></h5>
                         <div id="day-three-icon"></div>
@@ -92,7 +93,7 @@
                     </div>
                   </div>
                   <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-4">
-                    <div class="card text-center card-bg">
+                    <div class="card text-center card-bg hide">
                       <div class="card-body">
                         <h5 class="card-title" id="day-four-date"></h5>
                         <div id="day-four-icon"></div>
@@ -102,7 +103,7 @@
                     </div>
                   </div>
                   <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-4">
-                    <div class="card text-center card-bg">
+                    <div class="card text-center card-bg hide">
                       <div class="card-body">
                         <h5 class="card-title" id="day-five-date"></h5>
                         <div id="day-five-icon"></div>
@@ -128,6 +129,7 @@
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
 
