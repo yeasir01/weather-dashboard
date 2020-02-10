@@ -16,15 +16,42 @@ $("#search-btn").on("click", function (event) {
         $("#current-temp").text(response.main.temp + ' F°');
         $("#current-humidity").text(response.main.humidity + "%");
         $("#current-windspeed").text(response.wind.speed + " MPH");
-        $("#current-uv").text(response.sys.id);
 
         const currentIcon = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
 
         $("#weather-icon").html('<img src=' + currentIcon + ' class="current-icon" alt="Weather icon"></img>');
+        
+        getUvIndex(response);
+        fiveDay(search);
+        recentSearch.unshift(search); // add search to front of array
+        renderButtons(); //re-render buttons from array
+    })
+
+});
+
+$(document).on("click", ".city-btn", function (event) {
+
+    event.preventDefault();
+
+    var search = $(this).attr("data-name");
+    const dayQuery = "https://api.openweathermap.org/data/2.5/weather?q=" + search + "&units=imperial&appid=bed785ee913d61642b01b96cd98d7b6d";
+
+    $.ajax({
+        url: dayQuery,
+        method: "GET"
+    }).then(function (response) {
+        $("#current-city").text(response.name + ' (' + response.sys.country + ')');
+        $("#current-temp").text(response.main.temp + ' F°');
+        $("#current-humidity").text(response.main.humidity + "%");
+        $("#current-windspeed").text(response.wind.speed + " MPH");
+
+        const currentIcon = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
+
+        $("#weather-icon").html('<img src=' + currentIcon + ' class="current-icon" alt="Weather icon"></img>');
+        
+        getUvIndex(response);
 
         fiveDay(search);
-        recentSearch.unshift(search);
-        renderButtons();
     })
 
 });
@@ -78,9 +105,25 @@ function renderButtons() {
 
     for (var i = 0; i < recentSearch.length; i++) {
         var b = $("<button>");
-        b.addClass("btn btn-light w-100 mb-2");
+        b.addClass("btn btn-light w-100 mb-2 city-btn");
         b.attr("data-name", recentSearch[i]);
         b.text(recentSearch[i]);
         $(".recent").append(b);
     }
+}
+
+function getUvIndex(response) {
+    
+    var lat = response.coord.lat
+    var lon = response.coord.lon
+
+    const uvQuery = "http://api.openweathermap.org/data/2.5/uvi?appid=bed785ee913d61642b01b96cd98d7b6d&lat=" + lat +"&lon=" + lon;
+
+    $.ajax({
+        url: uvQuery,
+        method: "GET"
+    }).then(function (response) {
+        $("#current-uv").text(response.value);
+    })
+    
 }
