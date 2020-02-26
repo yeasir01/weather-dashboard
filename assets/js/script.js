@@ -5,28 +5,32 @@ $("#search-btn").on("click", function (event) {
     event.preventDefault();
 
     var search = $('#search-txt').val();
-    const dayQuery = "https://api.openweathermap.org/data/2.5/weather?q=" + search + "&units=imperial&appid=bed785ee913d61642b01b96cd98d7b6d";
+
+    if (search === '') {
+
+    } else {
+        const dayQuery = "https://api.openweathermap.org/data/2.5/weather?q=" + search + "&units=imperial&appid=bed785ee913d61642b01b96cd98d7b6d";
 
 
-    $.ajax({
-        url: dayQuery,
-        method: "GET"
-    }).then(function (response) {
-        $("#current-city").text(response.name + ' (' + response.sys.country + ')');
-        $("#current-temp").text(response.main.temp + ' F°');
-        $("#current-humidity").text(response.main.humidity + "%");
-        $("#current-windspeed").text(response.wind.speed + " MPH");
+        $.ajax({
+            url: dayQuery,
+            method: "GET"
+        }).then(function (response) {
+            $("#current-city").text(response.name + ' (' + response.sys.country + ')');
+            $("#current-temp").text(response.main.temp + ' F°');
+            $("#current-humidity").text(response.main.humidity + "%");
+            $("#current-windspeed").text(response.wind.speed + " MPH");
 
-        const currentIcon = "https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
+            const currentIcon = "https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
 
-        $("#weather-icon").html('<img src=' + currentIcon + ' class="current-icon" alt="Weather icon"></img>');
-        
-        getUvIndex(response);
-        fiveDay(search);
-        recentSearch.unshift(search); // add search to front of array
-        renderButtons(); //re-render buttons from array
-    })
+            $("#weather-icon").html('<img src=' + currentIcon + ' class="current-icon" alt="Weather icon"></img>');
 
+            getUvIndex(response);
+            fiveDay(search);
+            recentSearch.unshift(search); // add search to front of array
+            renderButtons(); //re-render buttons from array
+        })
+    }
 });
 
 $(document).on("click", ".city-btn", function (event) {
@@ -48,7 +52,7 @@ $(document).on("click", ".city-btn", function (event) {
         const currentIcon = "https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
 
         $("#weather-icon").html('<img src=' + currentIcon + ' class="current-icon" alt="Weather icon"></img>');
-        
+
         getUvIndex(response);
 
         fiveDay(search);
@@ -113,11 +117,11 @@ function renderButtons() {
 }
 
 function getUvIndex(response) {
-    
+
     var lat = response.coord.lat
     var lon = response.coord.lon
 
-    const uvQuery = "https://api.openweathermap.org/data/2.5/uvi?appid=bed785ee913d61642b01b96cd98d7b6d&lat=" + lat +"&lon=" + lon;
+    const uvQuery = "https://api.openweathermap.org/data/2.5/uvi?appid=bed785ee913d61642b01b96cd98d7b6d&lat=" + lat + "&lon=" + lon;
 
     $.ajax({
         url: uvQuery,
@@ -125,5 +129,5 @@ function getUvIndex(response) {
     }).then(function (response) {
         $("#current-uv").text(response.value);
     })
-    
+
 }
